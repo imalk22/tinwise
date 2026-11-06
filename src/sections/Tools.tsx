@@ -24,7 +24,7 @@ export function Tools() {
 
   return (
     <Section id="tools" className="bg-white dark:bg-[#0a0a0a]">
-      <SectionHeader n={8} eyebrow={t.tools.eyebrow} a={t.tools.titleA} b={t.tools.titleB} sub={t.tools.sub} />
+      <SectionHeader eyebrow={t.tools.eyebrow} a={t.tools.titleA} b={t.tools.titleB} sub={t.tools.sub} />
 
       <Reveal>
         <div role="tablist" aria-label={t.tools.eyebrow} className="-mx-5 mb-8 flex snap-x gap-2 overflow-x-auto px-5 pb-2 sm:mx-0 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0 [scrollbar-width:none]">

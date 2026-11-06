@@ -20,7 +20,7 @@ export function SalaryCalculator() {
 
   return (
     <Section id="salary" ambient={1}>
-      <SectionHeader n={4} eyebrow={s.eyebrow} a={s.titleA} b={s.titleB} accent="mute" breakLine sub={s.sub(money(TAX_YEAR.personalRelief / 12))} />
+      <SectionHeader n={1} eyebrow={s.eyebrow} a={s.titleA} b={s.titleB} accent="mute" breakLine sub={s.sub(money(TAX_YEAR.personalRelief / 12))} />
 
       <Reveal>
         <div className="card grid overflow-hidden md:grid-cols-2">

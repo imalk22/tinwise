@@ -4,6 +4,8 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 const PLACEHOLDER = "https://your-domain.lk";
+// Keep in step with PATHS in src/router.tsx.
+const SITE_PATHS = ["/", "/tin", "/calculators", "/tools", "/calendar", "/learn"];
 
 /** Writes robots.txt and sitemap.xml for the configured site URL, and warns if it's still the placeholder. */
 function siteFiles(siteUrl: string): Plugin {
@@ -25,7 +27,10 @@ function siteFiles(siteUrl: string): Plugin {
       this.emitFile({
         type: "asset",
         fileName: "sitemap.xml",
-        source: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${siteUrl}/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq></url>\n</urlset>\n`,
+        source:
+          `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+          SITE_PATHS.map((p) => `  <url><loc>${siteUrl}${p}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq></url>\n`).join("") +
+          `</urlset>\n`,
       });
     },
   };

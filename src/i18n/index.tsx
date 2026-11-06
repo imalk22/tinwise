@@ -43,7 +43,6 @@ export function LangProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = lang;
-    document.title = DICTS[lang].meta.title;
     try {
       localStorage.setItem(STORAGE_KEY, lang);
     } catch {

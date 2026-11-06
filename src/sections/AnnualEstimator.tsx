@@ -33,7 +33,7 @@ export function AnnualEstimator() {
 
   return (
     <Section id="annual" className="bg-white dark:bg-[#0a0a0a]">
-      <SectionHeader n={5} eyebrow={a.eyebrow} a={a.titleA} b={a.titleB} sub={a.sub(TAX_YEAR.label)} />
+      <SectionHeader n={2} eyebrow={a.eyebrow} a={a.titleA} b={a.titleB} sub={a.sub(TAX_YEAR.label)} />
       <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
         <Reveal>
           <div className="card grid gap-5 p-7 sm:grid-cols-2 sm:p-9 bg-canvas dark:bg-[#1c1c1e]">

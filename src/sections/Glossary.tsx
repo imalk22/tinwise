@@ -18,7 +18,7 @@ export function Glossary() {
 
   return (
     <Section id="glossary" className="bg-white dark:bg-[#0a0a0a]">
-      <SectionHeader n={9} eyebrow={g.eyebrow} a={g.titleA} b={g.titleB} sub={g.sub} />
+      <SectionHeader n={1} eyebrow={g.eyebrow} a={g.titleA} b={g.titleB} sub={g.sub} />
 
       <Reveal>
         <label className="relative mx-auto mb-10 block max-w-md">

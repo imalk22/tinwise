@@ -10,7 +10,7 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <Section id="faq" ambient={0}>
-      <SectionHeader n={10} eyebrow={t.faq.eyebrow} a={t.faq.title} />
+      <SectionHeader n={2} eyebrow={t.faq.eyebrow} a={t.faq.title} />
       <Reveal>
         <ul className="card mx-auto max-w-3xl divide-y hairline px-2 sm:px-4">
           {FAQ.map((f, i) => {

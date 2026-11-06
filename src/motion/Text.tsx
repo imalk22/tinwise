@@ -37,12 +37,14 @@ export function RiseTitle({
   accent = "gradient",
   breakLine = false,
   className = "headline",
+  as: Tag = "h2",
 }: {
   a: string;
   b?: string;
   accent?: "gradient" | "mute";
   breakLine?: boolean;
   className?: string;
+  as?: "h1" | "h2";
 }) {
   const [ref, shown] = useShown<HTMLHeadingElement>(0.3);
   let w = 0;
@@ -61,13 +63,13 @@ export function RiseTitle({
       ));
   const accentCls = accent === "gradient" ? "text-gradient" : "text-mute";
   return (
-    <h2 ref={ref} className={`${className} ${shown ? "shown" : ""}`} aria-label={[a, b].filter(Boolean).join(" ")}>
+    <Tag ref={ref} className={`${className} ${shown ? "shown" : ""}`} aria-label={[a, b].filter(Boolean).join(" ")}>
       <span aria-hidden="true">
         {words(a)}
         {b && breakLine && <br />}
         {b && words(b, accentCls)}
       </span>
-    </h2>
+    </Tag>
   );
 }
 

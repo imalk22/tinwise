@@ -13,7 +13,7 @@ export function InterestWht() {
 
   return (
     <Section id="interest" ambient={2}>
-      <SectionHeader n={6} eyebrow={s.eyebrow} a={s.titleA} b={s.titleB} sub={s.sub(pct(TAX_YEAR.interestWht, 0))} />
+      <SectionHeader n={3} eyebrow={s.eyebrow} a={s.titleA} b={s.titleB} sub={s.sub(pct(TAX_YEAR.interestWht, 0))} />
       <Reveal>
         <div className="card mx-auto grid max-w-4xl overflow-hidden md:grid-cols-2">
           <div className="space-y-5 p-7 sm:p-10">

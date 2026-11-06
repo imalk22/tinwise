@@ -1,31 +1,21 @@
 import { MotionConfig, motion, useScroll, useSpring } from "motion/react";
-import { lazy, Suspense } from "react";
 import { Nav } from "./components/Nav";
+import { LogoMark, Wordmark } from "./components/Logo";
 import { LangProvider, useT } from "./i18n";
 import { ReadyProvider } from "./motion/core";
 import { Loader } from "./motion/Loader";
 import { PointerEffects } from "./motion/PointerEffects";
-import { AnnualEstimator } from "./sections/AnnualEstimator";
-import { Calendar } from "./sections/Calendar";
-import { Faq } from "./sections/Faq";
-import { Hero } from "./sections/Hero";
-import { InterestWht } from "./sections/InterestWht";
-import { SalaryCalculator } from "./sections/SalaryCalculator";
-import { TinChecker } from "./sections/TinChecker";
-import { CtaBand, Marquee, Scrub, StatsBand } from "./sections/Story";
-import { TinGuide } from "./sections/TinGuide";
-import { Glossary } from "./sections/Glossary";
-import { Help } from "./sections/Help";
-
-// Below the fold and the heaviest section: load it after first paint.
-const Tools = lazy(() => import("./sections/Tools").then((m) => ({ default: m.Tools })));
+import { PAGES, Routes } from "./pages";
+import { RouterProvider } from "./router";
 
 export default function App() {
   return (
     <LangProvider>
-      <ReadyProvider>
-        <Page />
-      </ReadyProvider>
+      <RouterProvider>
+        <ReadyProvider>
+          <Page />
+        </ReadyProvider>
+      </RouterProvider>
     </LangProvider>
   );
 }
@@ -43,26 +33,27 @@ function Page() {
       <motion.div style={{ scaleX: progress }} className="fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-accent" />
       <Nav />
       <main>
-        <Hero />
-        <StatsBand />
-        <Marquee />
-        <Scrub />
-        <TinChecker />
-        <TinGuide />
-        <Help />
-        <SalaryCalculator />
-        <AnnualEstimator />
-        <InterestWht />
-        <Calendar />
-        <Suspense fallback={<div id="tools" className="min-h-[60vh]" />}>
-          <Tools />
-        </Suspense>
-        <Glossary />
-        <Faq />
-        <CtaBand />
+        <Routes />
       </main>
       <footer className="border-t hairline px-5 py-12 text-xs text-mute">
-        <div className="mx-auto max-w-6xl space-y-3 leading-relaxed">
+        <div className="mx-auto mb-10 flex max-w-6xl flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+          <a href="/" className="flex items-center gap-2 text-ink dark:text-white">
+            <LogoMark size={28} />
+            <Wordmark className="text-[18px]" />
+          </a>
+          <nav aria-label={t.footer.explore}>
+            <p className="mb-3 font-semibold text-ink dark:text-white">{t.footer.explore}</p>
+            <ul className="grid grid-cols-2 gap-x-10 gap-y-2 text-[13px] sm:grid-cols-3">
+              <li><a href="/" className="hover:text-ink dark:hover:text-white">{t.pages.home.label}</a></li>
+              {PAGES.map((p) => (
+                <li key={p.path}>
+                  <a href={p.path} className="hover:text-ink dark:hover:text-white">{t.pages[p.key].label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+        <div className="mx-auto max-w-6xl space-y-3 border-t hairline pt-8 leading-relaxed">
           <p>
             {t.footer.disclaimer}{" "}
             <a className="underline" href="https://www.ird.gov.lk" target="_blank" rel="noreferrer">ird.gov.lk</a>.

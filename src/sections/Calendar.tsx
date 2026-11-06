@@ -45,7 +45,7 @@ export function Calendar() {
 
   return (
     <Section id="calendar" className="bg-white dark:bg-[#0a0a0a]">
-      <SectionHeader n={7} eyebrow={t.calendar.eyebrow} a={t.calendar.titleA} b={t.calendar.titleB} accent="mute" sub={t.calendar.sub} />
+      <SectionHeader eyebrow={t.calendar.eyebrow} a={t.calendar.titleA} b={t.calendar.titleB} accent="mute" sub={t.calendar.sub} />
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {deadlines.map((d, i) => {
           const date = new Date(d.date + "T00:00:00");
