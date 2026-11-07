@@ -23,7 +23,7 @@ export function Tools() {
   const [tab, setTab] = useState<TabKey>("payslip");
 
   return (
-    <Section id="tools" className="bg-white dark:bg-[#0a0a0a]">
+    <Section id="tools" className="pt-6! md:pt-10!">
       <SectionHeader eyebrow={t.tools.eyebrow} a={t.tools.titleA} b={t.tools.titleB} sub={t.tools.sub} />
 
       <Reveal>

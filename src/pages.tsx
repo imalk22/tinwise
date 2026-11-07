@@ -24,10 +24,10 @@ type PageKey = "tin" | "calculators" | "tools" | "calendar" | "learn";
 type NavKey = "check" | "guide" | "help" | "salary" | "annual" | "interest" | "calendar" | "tools" | "glossary" | "faq";
 
 /** Site map: page path, its dictionary key, icon, tint, and the sections it holds. */
-export const PAGES: { path: PagePath; key: PageKey; icon: LucideIcon; tint: string; sections: NavKey[] }[] = [
+export const PAGES: { path: PagePath; key: PageKey; icon: LucideIcon; tint: string; sections: NavKey[]; compact?: boolean }[] = [
   { path: "/tin", key: "tin", icon: IdCard, tint: "#0071e3", sections: ["check", "guide", "help"] },
   { path: "/calculators", key: "calculators", icon: Calculator, tint: "#5e5ce6", sections: ["salary", "annual", "interest"] },
-  { path: "/tools", key: "tools", icon: Wrench, tint: "#bf5af2", sections: [] },
+  { path: "/tools", key: "tools", icon: Wrench, tint: "#bf5af2", sections: [], compact: true },
   { path: "/calendar", key: "calendar", icon: CalendarDays, tint: "#ff9f0a", sections: [] },
   { path: "/learn", key: "learn", icon: BookOpen, tint: "#30d158", sections: ["glossary", "faq"] },
 ];
@@ -218,20 +218,27 @@ function PageHero({ pageKey }: { pageKey: PageKey }) {
           <Icon size={30} strokeWidth={1.6} />
         </motion.span>
 
-        <div className="mt-7">
-          <Kicker>{pg.kicker}</Kicker>
-        </div>
-        <div className="mt-5">
-          <RiseTitle as="h1" a={pg.titleA} b={pg.titleB} className="display page-title" />
-        </div>
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35 }}
-          className="subhead mx-auto mt-6 max-w-2xl"
-        >
-          {pg.sub}
-        </motion.p>
+        {/* Compact pages skip the big title: their one section already has its own headline. */}
+        {page.compact ? (
+          <h1 className="sr-only">{pg.label}</h1>
+        ) : (
+          <>
+            <div className="mt-7">
+              <Kicker>{pg.kicker}</Kicker>
+            </div>
+            <div className="mt-5">
+              <RiseTitle as="h1" a={pg.titleA} b={pg.titleB} className="display page-title" />
+            </div>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="subhead mx-auto mt-6 max-w-2xl"
+            >
+              {pg.sub}
+            </motion.p>
+          </>
+        )}
 
         {page.sections.length > 0 && (
           <motion.div
