@@ -2,6 +2,8 @@
 
 *Your TIN, sorted.* A free TIN guide and tax calculators for Sri Lanka.
 
+**Live site:** https://tinwise.vercel.app
+
 An independent helper site for Sri Lanka's TIN rules (mandatory for 8 transactions from 1 November 2026) and personal tax calculations.
 
 ## Run
